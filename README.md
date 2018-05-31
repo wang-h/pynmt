@@ -15,7 +15,7 @@ Sometimes, we are only interested in the architecture of model construction,
 neither implementation details nor parameter tuning tricks.
 
 Implemented by Pytorch 0.4, though some modules references to OpenNMT-py, most parts (80%) are written by myself.
-I also paste the scripts for WMT 2018, you can start with them to build a baseline system.
+I also pasted the scripts for WMT 2018, you can start with them to build your own NMT system and evaluate your systems.
 
 
 REQUIREMENTS
