@@ -42,7 +42,6 @@ For monotonic decoding (without beam_search), you can use any number for test_ba
 
 SGD 1.0 with learning_rate_decay as 0.9 (recommended)
 
-
 -GRU: 
 
 Adam 1e-4 max_grad_norm = 5 (recommended) 
