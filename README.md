@@ -33,9 +33,7 @@ For translation,
 
     python translate.py --config config/nmt.ini --checkpoint {pretrained_model.pt} -v
 
-I remember that there is a bug when using beam_search = True, you need to set test_batch_size=1 to run correctly:
-
-    python apply_mdl.py --input {test.txt} --codebook {codebook.txt} > {test.seg.txt}
+I remember that there is a bug when using beam_search = True, you need to set test_batch_size=1 to make the output correct.
 
 For monotonic decoding (without beam_search), you can use any number for test_batch_size.
 
