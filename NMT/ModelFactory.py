@@ -8,7 +8,6 @@ import torch.nn as nn
 from Utils.log import trace
 from Utils.DataLoader import PAD_WORD
 from NMT.Models.RNN import RNNModel
-#from NMT.Models.CNN import CNNModel
 from NMT.Models.Transformer import TransformerModel
 from NMT.CheckPoint import CheckPoint
 
@@ -90,11 +89,6 @@ def model_factory(config, checkpoint, *vocab):
             src_embeddings, trg_embeddings, 
             trg_vocab.vocab_size, trg_vocab.padding_idx,    
             config)
-    # elif config.system == "CNN":
-    #     model = CNNModel(
-    #         src_embeddings, trg_embeddings, 
-    #         trg_vocab.vocab_size, trg_vocab.padding_idx,    
-    #         config)
     if checkpoint:
         trace("Loading model parameters from checkpoint: %s." % str(checkpoint))
         cp = CheckPoint(checkpoint)

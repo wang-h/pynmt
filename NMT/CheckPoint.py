@@ -16,7 +16,7 @@ def dump_checkpoint(model, path, suffix=""):
 
 class CheckPoint(object):
     """
-    Standard NMT Loss Computation.
+    Standard Training Checkpoint.
     """
     def __init__(self, checkpoint):
         super(CheckPoint, self).__init__()
