@@ -30,6 +30,7 @@ For training, please use a Moses-style configuration file to specify the path an
      python train.py --config config/nmt.ini
 
 For translation,
+
     python translate.py --config config/nmt.ini --checkpoint {pretrained_model.pt} -v
 
 I remember that there is a bug when using beam_search = True, you need to set test_batch_size=1 to run correctly:
