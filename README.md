@@ -1,6 +1,6 @@
 Pytorch-based Neural Machine Translation System 
 ==========
-The reason why I create this project is simple. 
+The reason that why I create this project is simple. 
 State-of-the-art NMT systems are too much complex and hard to understand by the beginners. 
 
 Personally, I like [Opennmt-py](https://github.com/OpenNMT/OpenNMT-py), and respect their contributions.
