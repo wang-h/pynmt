@@ -38,9 +38,18 @@ I remember that there is a bug when using beam_search = True, you need to set te
 For monotonic decoding (without beam_search), you can use any number for test_batch_size.
 
 ## Optimizer
--LSTM: SGD 1.0 with learning_rate_decay as 0.9 (recommended)
--GRU: Adam 1e-4 max_grad_norm = 5 (recommended) 
--Transformer: Adam 1e-4, grad_accum_count = 4~5, label_smoothing=0.1 (recommended)
+-LSTM:
+
+SGD 1.0 with learning_rate_decay as 0.9 (recommended)
+
+
+-GRU: 
+
+Adam 1e-4 max_grad_norm = 5 (recommended) 
+
+-Transformer: 
+
+Adam 1e-4, grad_accum_count = 4~5, label_smoothing=0.1 (recommended)
 
 ## References
 
