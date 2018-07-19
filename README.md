@@ -1,21 +1,11 @@
-Pytorch-based Neural Machine Translation System 
+Neural Machine Translation System based on Pytorch
 ==========
-The reason that why I create this project is simple. 
-State-of-the-art NMT systems are too much complex and hard to understand by the beginners. 
+State-of-the-art NMT systems are difficult to understand. 
 
-Personally, I like [Opennmt-py](https://github.com/OpenNMT/OpenNMT-py), and respect their contributions.
-However, even I am very familiar with Pytorch, I spend more than one month to understand all details:
-- data pre-processing pipelines 
-- Encoder-Decoder architecture
-- beam-search in NMT
-- checkpoint resembling 
-- why encoder-decoder model does not need word2vec.
+For beginners, I recommend this project, which is a simplified version of [Opennmt-py](https://github.com/OpenNMT/OpenNMT-py).
 
-Sometimes, we are only interested in the architecture of model construction, 
-neither implementation details nor parameter tuning tricks.
-
-Implemented by Pytorch 0.4, though some modules references to OpenNMT-py, most parts (80%) are written by myself.
-I also pasted the scripts for WMT 2018, you can start with them to build your own NMT system and evaluate your systems.
+I Implemented with Pytorch 0.4, though some modules references to OpenNMT-py, most of the code (80%) is written by myself.
+I also post some scripts. With these scripts, you can even build your own NMT systems and evaluate them on WMT 2018 datasets.
 
 
 REQUIREMENTS
@@ -57,4 +47,3 @@ Adam 1e-4, grad_accum_count = 4~5, label_smoothing=0.1 (recommended)
 2. Luong, Minh-Thang, Hieu Pham, and Christopher D. Manning. "Effective approaches to attention-based neural machine translation." arXiv preprint arXiv:1508.04025 (2015).
 
 3. Bahdanau, Dzmitry, Kyunghyun Cho, and Yoshua Bengio. "Neural machine translation by jointly learning to align and translate." arXiv preprint arXiv:1409.0473 (2014).
-
