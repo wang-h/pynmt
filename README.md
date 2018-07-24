@@ -1,4 +1,4 @@
-Neural Machine Translation System based on Pytorch
+Neural Machine Translation System (Pytorch)
 ==========
 State-of-the-art NMT systems are difficult to understand. 
 
