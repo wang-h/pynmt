@@ -4,7 +4,7 @@ State-of-the-art NMT systems are difficult to understand.
 
 For beginners, I highly recommend this project. In fact, it is a simplified version of [Opennmt-py](https://github.com/OpenNMT/OpenNMT-py).
 
-I implemented it with Pytorch 0.4, though some modules references to OpenNMT-py, most of the code (80%) is written by myself.
+I implemented it with Pytorch 0.4, though some modules reference to OpenNMT-py, most of the code (80%) is written by myself.
 With the scripts that I posted, you can even build your own NMT systems and evaluate them on WMT 2018 datasets.
 
 
