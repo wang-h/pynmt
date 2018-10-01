@@ -2,20 +2,21 @@ Neural Machine Translation System (Pytorch)
 ==========
 State-of-the-art NMT systems are difficult to understand. 
 
-For beginners, I highly recommend this project. In fact, it is a simplified version of [Opennmt-py](https://github.com/OpenNMT/OpenNMT-py).
+For beginners, I highly recommend this project, which is a simplified version of [Opennmt-py](https://github.com/OpenNMT/OpenNMT-py).
 
-I implemented it with Pytorch 0.4, though some modules reference to OpenNMT-py, most of the code (80%) is written by myself.
+Though some modules reference to OpenNMT-py, most of the code (80%) is written by myself.
 With the scripts that I posted, you can even build your own NMT systems and evaluate them on WMT 2018 datasets.
 
 
 REQUIREMENTS
 ------------
+(I implemented it with Pytorch 0.4. )
 Python version >= 3.6 (recommended)
 Pytorch version >= 0.4 (recommended)
 
 Usage
 ------------
-For training, please use a Moses-style configuration file to specify the path and hyper-parameters.
+For training, please use a Moses-style configuration file to specify paths and hyper-parameters.
     
      python train.py --config config/nmt.ini
 
@@ -23,7 +24,9 @@ For translation,
 
     python translate.py --config config/nmt.ini --checkpoint {pretrained_model.pt} -v
 
-I remember that there is a bug when using beam_search = True, you need to set test_batch_size=1 to make the output correct.
+A known bug is that beam_search does not support batch decoding:
+when using beam_search = True, 
+you need to set test_batch_size=1 to make the output correct.
 
 For monotonic decoding (without beam_search), you can use any number for test_batch_size.
 
