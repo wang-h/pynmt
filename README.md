@@ -2,7 +2,7 @@ Neural Machine Translation System (Pytorch)
 ==========
 State-of-the-art NMT systems are difficult to understand. 
 
-For beginners, I highly recommend this project, which is a simplified version of [Opennmt-py](https://github.com/OpenNMT/OpenNMT-py).
+For the beginners, I highly recommend this project, which is a simplified version of [Opennmt-py](https://github.com/OpenNMT/OpenNMT-py).
 
 Though some modules reference to OpenNMT-py, most of the code (80%) is written by myself.
 With the scripts that I posted, you can even build your own NMT systems and evaluate them on WMT 2018 datasets.
