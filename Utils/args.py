@@ -1,6 +1,9 @@
 import time
 import argparse
 
+from distutils.util import strtobool
+
+
 #     parser = ArgumentParser()
 #     parser.is_training = True if mode == "train" else False
     
@@ -95,6 +98,13 @@ def add_data_args(parser):
     group.add_argument('--max_seq_len', type=int, default=50,
                         help="Maximum sequence length")
 
+    group.add_argument('--shuffle_data', type=lambda x: bool(strtobool(x)), default=True,
+                    help="Whether to shuffle data")
+
+    group.add_argument('--mini_batch_sort_order', type=str, default='decreasing',
+                    choices=['decreasing', 'increasing', 'none'],
+                    help='Order for sorting mini-batches by length')
+
 def add_embed_args(parser):
     group = parser.add_argument_group('Embedding')
 
@@ -111,7 +121,10 @@ def add_embed_args(parser):
                     help="""sharing vocabulary across languages.""") 
 
     group.add_argument('--share_embedding', action='store_true',
-                    help="""sharing embedding across languages.""") 
+                    help="""sharing embedding across languages.""")
+
+    group.add_argument('--sparse_embeddings', type=lambda x: bool(strtobool(x)), default=False,
+                    help='Whether to use sparse embeddings')
 
 
     
@@ -132,7 +145,8 @@ def add_train_args(parser):
                     help='Maximum batch size for validation')    
 
     group.add_argument('--report_every', type=int, default=100,
-                    help='Report statistics after the determinted number of steps.')  
+                    help='Report statistics after the determinted number of steps.')
+
 def add_translate_args(parser):
     group = parser.add_argument_group('Translate')
      

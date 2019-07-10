@@ -83,9 +83,9 @@ class DataSet(list):
         self.read(src_txt, trg_txt)
 
     def read(self, src_txt, trg_txt):
-        with open(src_txt, "r") as fin_src,\
-             open(trg_txt, "r") as fin_trg:
-            for sid, (line1, line2) in enumerate(zip(fin_src, fin_trg)):
+        with open(src_txt, "r", encoding='utf-8') as fin_src, \
+             open(trg_txt, "r", encoding='utf-8') as fin_trg:
+             for sid, (line1, line2) in enumerate(zip(fin_src, fin_trg)):
                 src, trg = line1.rstrip("\r\n"), line2.rstrip("\r\n")
                 src = src.split()
                 trg = trg.split()
@@ -101,6 +101,10 @@ class DataSet(list):
     def _numericalize(self, words, stoi):
         return  [1 if x not in stoi else stoi[x] for x in words] 
 
+    @staticmethod
+    def _denumericalize(words, itos):
+        return ['UNK' if x not in itos else itos[x] for x in words]
+
     def numericalize(self, src_w2id, trg_w2id):
         for i, (sid, example) in enumerate(self):
             x, y = example
@@ -111,7 +115,8 @@ class DataSet(list):
 class DataBatchIterator(object):
     def __init__(self, src_txt, trg_txt, 
             training=True, shuffle=False, share_vocab=False, 
-            batch_size=64, max_length=50, vocab=None):
+            batch_size=64, max_length=50, vocab=None,
+            mini_batch_sort_order='decreasing'):
         self.batch_size = batch_size
         self.shuffle = shuffle
         self.training = training
@@ -134,6 +139,7 @@ class DataBatchIterator(object):
                 src_w2id=self.src_vocab.stoi, 
                 trg_w2id=self.trg_vocab.stoi)
         self.num_batches = math.ceil(len(self.examples)/self.batch_size)
+        self.mini_batch_sort_order = mini_batch_sort_order
 
     def init_vocab(self, path):
         if os.path.isfile(path):
@@ -172,7 +178,12 @@ class DataBatchIterator(object):
   
 
     def pad_seq_pair(self, samples):
-        samples = sorted(samples, key=lambda x: len(x[1][0]), reverse=True)
+        samples = samples if 'none' == self.mini_batch_sort_order else \
+            sorted(
+                samples,
+                key=lambda x: len(x[1][0]),
+                reverse=('decreasing' == self.mini_batch_sort_order)
+            )
         pairs = [x for x in  map(lambda x:x[1], samples)]
         sid = [x for x in map(lambda x:x[0], samples)]
         

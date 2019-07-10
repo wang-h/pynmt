@@ -30,7 +30,7 @@ def make_embeddings(config, *vocab):
                             max_norm=None, 
                             norm_type=2, 
                             scale_grad_by_freq=False, 
-                            sparse=False)
+                            sparse=config.sparse_embeddings)
         trg_embeddings = nn.Embedding(
                             trg_vocab.vocab_size, 
                             config.src_embed_dim, 
@@ -38,10 +38,7 @@ def make_embeddings(config, *vocab):
                             max_norm=None, 
                             norm_type=2, 
                             scale_grad_by_freq=False, 
-                            sparse=False)
-        if config.hard_encoding:
-            self.hard_encoding = IntegerEmbedding(embed_dim, hidden_size, 32, 64)
-        
+                            sparse=config.sparse_embeddings)
     else:
         
         assert config.trg_embed_dim == config.src_embed_dim
@@ -54,7 +51,7 @@ def make_embeddings(config, *vocab):
                             max_norm=None, 
                             norm_type=2, 
                             scale_grad_by_freq=False, 
-                            sparse=False)
+                            sparse=config.sparse_embeddings)
         if config.share_embedding:
             trace("Making shared embeddings ...")
             trg_embeddings = src_embeddings
@@ -67,7 +64,7 @@ def make_embeddings(config, *vocab):
                                 max_norm=None, 
                                 norm_type=2, 
                                 scale_grad_by_freq=False, 
-                                sparse=False)
+                                sparse=config.sparse_embeddings)
     return src_vocab, trg_vocab, src_embeddings, trg_embeddings
 
 
