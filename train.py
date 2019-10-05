@@ -67,10 +67,11 @@ def load_dataset(dataset, batch_size, config, prefix):
         train_src, train_trg,
         share_vocab=config.share_vocab,
         training=config.training,
-        shuffle=config.training,
+        shuffle=config.shuffle_data,
         batch_size=batch_size,
         max_length=config.max_seq_len,
-        vocab=config.save_vocab)
+        vocab=config.save_vocab,
+        mini_batch_sort_order=config.mini_batch_sort_order)
     trace(prefix, train_data)
     return train_data
 

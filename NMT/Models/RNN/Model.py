@@ -23,7 +23,8 @@ class RNNModel(nn.Module):
                             src_embedding,
                             config.rnn_type, 
                             config.src_embed_dim, 
-                            config.hidden_size, 
+                            config.hidden_size,
+                            'decreasing' == config.mini_batch_sort_order, # True if decreasing, else false
                             config.enc_num_layers,
                             config.dropout, 
                             config.bidirectional)

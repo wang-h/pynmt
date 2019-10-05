@@ -2,5 +2,6 @@
 !/.gitignore
 *.pyc 
 scripts
+config/*
 __pycache__/*
 __pycache__

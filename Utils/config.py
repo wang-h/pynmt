@@ -21,8 +21,8 @@ class Config(object):
 
     def __init__(self, prefix, training=True):
         self.training = training
-        self.parser = make_parser(training) 
-        self.args = self.parser.parse_args() 
+        self.parser = make_parser(training)
+        self.args = self.parser.parse_args()
         
         self.config_file = self.args.config
         self.read_config(self.config_file)

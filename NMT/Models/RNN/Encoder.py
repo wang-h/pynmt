@@ -8,7 +8,8 @@ class RNNEncoder(nn.Module):
                 src_embedding, 
                 rnn_type, 
                 embed_dim,
-                hidden_size, 
+                hidden_size,
+                enforce_sorted=True,
                 num_layers=2, 
                 dropout=0.0, 
                 bidirectional=True):
@@ -19,6 +20,7 @@ class RNNEncoder(nn.Module):
         assert hidden_size % num_directions == 0
         hidden_size = hidden_size // num_directions
         self.num_layers = num_layers
+        self.enforce_sorted = enforce_sorted
         self.bidirectional = bidirectional
         self.rnn_type = rnn_type
         self.rnn = getattr(nn, rnn_type)(embed_dim,
@@ -58,7 +60,7 @@ class RNNEncoder(nn.Module):
         """
         src_embed = self.src_embedding(src)
         if lengths is not None:
-            packed = pack(src_embed, lengths.view(-1).tolist())    
+            packed = pack(src_embed, lengths.view(-1).tolist(), enforce_sorted=self.enforce_sorted)   
         
         output, final_state = self.rnn(packed)
 
